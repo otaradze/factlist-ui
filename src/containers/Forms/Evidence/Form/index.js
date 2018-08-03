@@ -17,12 +17,12 @@ const Form = ({
 }) => (
   <form onSubmit={handleSubmit}>
     <Flex flexDirection="column">
-      <Box mb={30}>
+      <Box>
         <Label>Claim is:</Label>
         <Field name="conclusion" component={Conclusions} validate={[ required ]} />
       </Box>
 
-      <Box mb={15}>
+      <Box mt={30} >
         <Label>Because:</Label>
         <Field
           id="evidence"
@@ -33,7 +33,7 @@ const Form = ({
           onFocus={onMultimediaInputFocus} />
       </Box>
 
-      <Box alignSelf="flex-end">
+      <Box alignSelf="flex-end" mt={25} mb='5px'>
         <Button disabled={submitting}>
           {submitting ? 'Adding...' : 'Add Evidence'}
         </Button>

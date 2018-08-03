@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { initialize } from 'redux-form'
 import _ from 'utils/_'
@@ -11,6 +11,8 @@ import {
   resetAddEvidenceStates,
 } from 'modules/evidence/actions'
 import Form from './Form'
+import Container from './Container'
+import Title from './Title'
 
 class EvidenceForm extends Component {
   onSubmit = this.onSubmit.bind(this)
@@ -74,10 +76,17 @@ class EvidenceForm extends Component {
   render() {
     const { formKey } = this.state
 
-    return <Form
-      key={formKey}
-      onMultimediaInputFocus={this.checkUser}
-      onSubmit={this.onSubmit} />
+    return (
+      <Fragment>
+        <Title>Add new evidence</Title>
+        <Container>
+          <Form
+            key={formKey}
+            onMultimediaInputFocus={this.checkUser}
+            onSubmit={this.onSubmit} />
+        </Container>
+      </Fragment>
+    )
   }
 }
 

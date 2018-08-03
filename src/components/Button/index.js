@@ -6,7 +6,8 @@ const Button = styled.button`
   font-size: 12px;
 
   display: inline-block;
-  padding: 12px 30px;
+  padding: 0 30px;
+  line-height: 38px;
 
   user-select: none;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer' };

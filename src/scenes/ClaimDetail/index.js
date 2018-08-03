@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { Flex, Box } from 'grid-styled'
 import Header from 'scenes/Header'
 import { Container, Left, Right, Center } from 'components/Layout'
 import { fetchClaimByIdRequest } from 'modules/claim/actions'
@@ -29,17 +30,23 @@ class ClaimDetail extends Component {
         <Container>
           <Left></Left>
           <Center>
-            {requesting && <ClaimLoader />}
+            <Flex flexDirection="column" mb={200}>
+              <Box>
+                {requesting && <ClaimLoader />}
+              </Box>
 
-            {claim && <Claim claim={claim} />}
-
-            <div style={{ marginBottom: '40px' }}>
-              {claim && claim.evidences.map(evidence => <Evidence
-                key={evidence.id}
-                evidence={evidence} />)}
-            </div>
-
-            <EvidenceForm claimId={this.claimId} />
+              <Box>
+                {!requesting && claim && <Claim claim={claim} />}
+              </Box>
+              <Box>
+                {!requesting && claim && claim.evidences.map(evidence => <Evidence
+                  key={evidence.id}
+                  evidence={evidence} />)}
+              </Box>
+              <Box mt={40}>
+                <EvidenceForm claimId={this.claimId} />
+              </Box>
+            </Flex>
           </Center>
           <Right></Right>
         </Container>

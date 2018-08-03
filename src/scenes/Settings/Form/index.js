@@ -65,7 +65,7 @@ const Form = ({
           component={TextField} />
       </Box>
 
-      <Box mt={20}>
+      <Box alignSelf="flex-end" mt={20}>
         <Button disabled={requesting}>
           {requesting ? 'Saving...' : 'Save'}
         </Button>

@@ -21,7 +21,9 @@ export default class Linkify extends Component {
   }
 
   parseText(text) {
-    const extractedUrls = extractUrlsWithIndices(text)
+    const extractedUrls = extractUrlsWithIndices(text, {
+      extractUrlsWithoutProtocol: false,
+    })
 
     const elements = []
 

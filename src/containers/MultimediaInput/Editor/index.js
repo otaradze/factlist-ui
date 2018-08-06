@@ -42,7 +42,9 @@ export default class CustomEditor extends Component {
   catchUrls(content) {
     const { onUrlsChange } = this.props
     const plainText = this.getPlainText()
-    const urls = _.uniq(extractUrls(plainText))
+    const urls = _.uniq(extractUrls(plainText, {
+      extractUrlsWithoutProtocol: false,
+    }))
 
     if (!_.isEqual(urls, this.state.urls)) {
       this.setState({ urls }, () => onUrlsChange(urls))
@@ -54,7 +56,7 @@ export default class CustomEditor extends Component {
 
     let text = this.getPlainText()
 
-    extractUrlsWithIndices(text)
+    extractUrlsWithIndices(text, { extractUrlsWithoutProtocol: false })
       .filter(extracted => extracted.url === url)
       .reverse()
       .forEach(url => {
